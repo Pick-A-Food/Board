@@ -42,8 +42,6 @@ public class BoardController {
         ListResponseDTO<BoardDTO> responseDTO = service.getList(listDTO);
         //model.addAttribute("dtoList", responseDTO);
         model.addAttribute("dtoList", responseDTO.getDtoList());
-        model.addAttribute("total", responseDTO.getTotal());
-
         int total = responseDTO.getTotal();
         model.addAttribute("pageMaker", new PageMaker(listDTO.getPage(), total));
 
