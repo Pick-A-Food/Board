@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: mils3
-  Date: 2022-04-19
-  Time: 오후 6:04
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <!-- Bootstrap core JavaScript-->
