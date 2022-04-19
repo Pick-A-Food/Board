@@ -64,9 +64,9 @@ public class BoardController {
         /* 중요 !!!! */
         // rttr.addAllAttributes()  -> 계속 똑같이 문자열 만들어냄
         // rttr.addAttribute("num",321);
-
         rttr.addFlashAttribute("result", 123);
 
+        service.insert(boardDTO);
 
         return "redirect:/board/list";
     }
