@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.sp1.domain.Board;
 import org.zerock.sp1.dto.BoardDTO;
 import org.zerock.sp1.dto.ListDTO;
@@ -21,6 +22,12 @@ public class BoardServiceImpl implements BoardService{
 
     private final BoardMapper boardMapper;
     private final ModelMapper modelMapper;
+
+
+    @Override
+    public void insert(BoardDTO boardDTO) {
+
+    }
 
     @Override
     public ListResponseDTO<BoardDTO> getList(ListDTO listDTO) {

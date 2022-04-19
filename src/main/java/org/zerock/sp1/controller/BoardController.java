@@ -65,8 +65,11 @@ public class BoardController {
         // rttr.addAllAttributes()  -> 계속 똑같이 문자열 만들어냄
         // rttr.addAttribute("num",321);
 
-        rttr.addFlashAttribute("result", 123);
+        rttr.addFlashAttribute("title", boardDTO.getTitle());
+        rttr.addFlashAttribute("content", boardDTO.getContent());
+        rttr.addFlashAttribute("writer", boardDTO.getWriter());
 
+       // BoardService.insert(rttr);//subject, content 담겨있음
 
         return "redirect:/board/list";
     }

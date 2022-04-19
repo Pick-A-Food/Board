@@ -213,13 +213,15 @@
                 <form action="/board/register/" method="post">
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label">제목</label>
-                        <input type="email" name="title" class="form-control" id="exampleFormControlInput1" placeholder="">
+                        <input type="text" name="title" class="form-control" id="exampleFormControlInput1" placeholder=""> 작성자 <input type="text" name="writer" class="form-control">
                     </div>
                     <div class="mb-3">
                         <label for="exampleFormControlTextarea1" class="form-label">내용</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="6"></textarea>
+                        <textarea class="form-control" name="content" id="exampleFormControlTextarea1" rows="9"></textarea>
                     </div>
-                    <button type="button" class="btn btn-outline-success d-grid gap-2 d-md-flex justify-content-md-end">등록</button>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button type="submit" class="btn btn-outline-success">등록</button>
+                    </div>
                 </form>
 
             </div>
@@ -268,17 +270,4 @@
     </div>
 </div>
 
-<!-- Bootstrap core JavaScript-->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-<!-- Core plugin JavaScript-->
-<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-<!-- Custom scripts for all pages-->
-<script src="js/sb-admin-2.min.js"></script>
-
-
-
-</body>
-</html>
+<%@ include file="footer.jsp" %>
