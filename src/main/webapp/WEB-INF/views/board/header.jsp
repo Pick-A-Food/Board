@@ -14,7 +14,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Animation Utilities</title>
+    <title>Pic A Food Board</title>
 
     <!-- Custom fonts for this template-->
     <link href="http://106.241.252.54:8085/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">

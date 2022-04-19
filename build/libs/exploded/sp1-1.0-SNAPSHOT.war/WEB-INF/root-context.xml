@@ -25,7 +25,7 @@
         <property name="driverClassName"
                   value="org.mariadb.jdbc.Driver"></property>
         <property name="jdbcUrl"
-                  value="jdbc:mariadb://127.0.0.1:3306/webdb"></property>
+                  value="jdbc:mariadb://106.241.252.54:8090/webdb"></property>
         <property name="username" value="webuser"></property>
         <property name="password" value="webuser"></property>
     </bean>
