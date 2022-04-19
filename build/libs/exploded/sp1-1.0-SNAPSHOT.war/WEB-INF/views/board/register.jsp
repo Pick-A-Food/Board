@@ -1,10 +1,10 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>\
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
 <%@ include file="header.jsp" %>
-<html>
-<head>
-    <title>등록</title>
-</head>
-<body id="page-top">
+<%@page import="java.util.*"%>
+<%
+    request.setCharacterEncoding("UTF-8");
+%>
 
 <!-- Page Wrapper -->
 <div id="wrapper">
@@ -124,7 +124,7 @@
                             </h6>
                             <a class="dropdown-item d-flex align-items-center" href="#">
                                 <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle" src="img/undraw_profile_1.svg" alt="...">
+                                    <img class="rounded-circle" src="http://106.241.252.54:8085/img/undraw_profile_1.svg" alt="...">
                                     <div class="status-indicator bg-success"></div>
                                 </div>
                                 <div class="font-weight-bold">
@@ -135,7 +135,7 @@
                             </a>
                             <a class="dropdown-item d-flex align-items-center" href="#">
                                 <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle" src="img/undraw_profile_2.svg" alt="...">
+                                    <img class="rounded-circle" src="http://106.241.252.54:8085/img/undraw_profile_2.svg" alt="...">
                                     <div class="status-indicator"></div>
                                 </div>
                                 <div>
@@ -146,7 +146,7 @@
                             </a>
                             <a class="dropdown-item d-flex align-items-center" href="#">
                                 <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle" src="img/undraw_profile_3.svg" alt="...">
+                                    <img class="rounded-circle" src="http://106.241.252.54:8085/img/undraw_profile_3.svg" alt="...">
                                     <div class="status-indicator bg-warning"></div>
                                 </div>
                                 <div>
@@ -176,7 +176,7 @@
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
-                            <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
+                            <img class="img-profile rounded-circle" src="http://106.241.252.54:8085/img/undraw_profile.svg">
                         </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -210,16 +210,22 @@
 
                 <!-- Page Heading -->
                 <h1 class="h3 mb-4 text-gray-800">Pick A Food Board</h1>
-                <form action="/board/register/" method="post">
+                <form action="/board/register/" method="post" accept-charset="utf-8">
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label">제목</label>
-                        <input type="email" name="title" class="form-control" id="exampleFormControlInput1" placeholder="">
+                        <input type="text" name="title" class="form-control" id="exampleFormControlInput1" placeholder="">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">작성자</label>
+                        <input type="text" name="writer" class="form-control">
                     </div>
                     <div class="mb-3">
                         <label for="exampleFormControlTextarea1" class="form-label">내용</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="6"></textarea>
+                        <textarea class="form-control" name="content" id="exampleFormControlTextarea1" rows="6"></textarea>
                     </div>
-                    <button type="button" class="btn btn-outline-success d-grid gap-2 d-md-flex justify-content-md-end">등록</button>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button type="submit" class="btn btn-outline-success">등록</button>
+                    </div>
                 </form>
 
             </div>
@@ -268,17 +274,4 @@
     </div>
 </div>
 
-<!-- Bootstrap core JavaScript-->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-<!-- Core plugin JavaScript-->
-<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-<!-- Custom scripts for all pages-->
-<script src="js/sb-admin-2.min.js"></script>
-
-
-
-</body>
-</html>
+<%@ include file="footer.jsp" %>
