@@ -41,7 +41,7 @@ public class BoardController {
         log.info(listDTO);
         ListResponseDTO<BoardDTO> responseDTO = service.getList(listDTO);
         PageMaker pageMaker = new PageMaker(listDTO, responseDTO.getTotal());
-        log.info("test");
+        model.addAttribute("listDTO", listDTO);
         model.addAttribute("dtoList", responseDTO.getDtoList());
         model.addAttribute("pageMaker", pageMaker);
     }
@@ -62,7 +62,6 @@ public class BoardController {
         // rttr.addAllAttributes()  -> 계속 똑같이 문자열 만들어냄
         // rttr.addAttribute("num",321);
         rttr.addFlashAttribute("result", 123);
-
         service.insert(boardDTO);
 
         return "redirect:/board/list";

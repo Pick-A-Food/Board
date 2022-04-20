@@ -42,6 +42,7 @@ public class BoardServiceImpl implements BoardService{
                 boardList.stream()
                         .map(board -> modelMapper.map(board, BoardDTO.class))
                         .collect(Collectors.toList());
+
         return ListResponseDTO.<BoardDTO>builder()
                 .dtoList(dtoList)
                 .total(boardMapper.getTotal(listDTO))
