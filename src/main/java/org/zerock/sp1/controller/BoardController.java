@@ -40,11 +40,10 @@ public class BoardController {
 
         log.info(listDTO);
         ListResponseDTO<BoardDTO> responseDTO = service.getList(listDTO);
-        //model.addAttribute("dtoList", responseDTO);
+        PageMaker pageMaker = new PageMaker(listDTO, responseDTO.getTotal());
+        log.info("test");
         model.addAttribute("dtoList", responseDTO.getDtoList());
-        int total = responseDTO.getTotal();
-        model.addAttribute("pageMaker", new PageMaker(listDTO.getPage(), total));
-
+        model.addAttribute("pageMaker", pageMaker);
     }
 
 
