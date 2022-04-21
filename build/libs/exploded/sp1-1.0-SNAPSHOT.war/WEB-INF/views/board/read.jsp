@@ -26,8 +26,12 @@
             <span>${boardDetail.content}</span>
           </div>
           </div>
-          <button class="btn btn-primary">수정</button>
-          <button class="btn btn-danger">삭제</button>
+          <form action="/board/update/${boardDetail.bno}" method="post" style ='display:inline-block;'>
+            <button class="btn btn-primary">수정</button>
+          </form>
+          <form action="/board/delete/${boardDetail.bno}" method="post" style ='display:inline-block;'>
+            <button class="btn btn-danger">삭제</button>
+          </form>
         </div>
       </div>
     </div>
