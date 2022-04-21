@@ -33,16 +33,16 @@
                           <div class="col-sm-12 col-md-4">
                             <div>
                                 <select name="search-type" aria-controls="dataTable" class="search-type custom-select custom-select-sm form-control form-control-sm">
-                                  <option value="t">제목</option>
-                                  <option value="tc">제목+내용</option>
-                                  <option value="tcw">제목+내용+작성자</option>
+                                  <option value="t" ${listDTO.type == "t" ? "selected" : ""}>제목</option>
+                                  <option value="tc" ${listDTO.type == "tc" ? "selected" : ""}>제목+내용</option>
+                                  <option value="tcw" ${listDTO.type == "tcw" ? "selected" : ""}>제목+내용+작성자</option>
                                 </select>
                             </div>
                           </div>
                           <div class="col-sm-12 col-md-2"></div>
                           <div class="col-sm-12 col-md-6">
                             <div class="input-group">
-                              <input type="text" class="form-control bg-light border-0 small keyword" name="keyword" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                              <input type="text" value="${listDTO.keyword}" class="form-control bg-light border-0 small keyword" name="keyword" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
                               <div class="input-group-append">
                                 <button class="btn btn-primary search-btn" type="button">
                                   <i class="fas fa-search fa-sm"></i>
@@ -138,6 +138,7 @@
           // 한 페이지에서 'size'개씩 보기
           document.querySelector(".size").addEventListener("change", (e) => {
             actionForm.querySelector("input[name='size']").value = e.target.value;
+            actionForm.setAttribute("action", "/board/list");
             actionForm.submit();
           }, false);
 
@@ -150,6 +151,7 @@
               return;
             }
             actionForm.querySelector("input[name='page']").value = target.getAttribute("href");
+            actionForm.setAttribute("action", "/board/list");
             actionForm.submit();
           }, false);
 
@@ -160,6 +162,7 @@
             actionForm.querySelector("input[name='page']").value = 1;
             actionForm.querySelector("input[name='type']").value = searchType;
             actionForm.querySelector("input[name='keyword']").value = keyword;
+            actionForm.setAttribute("action", "/board/list");
             actionForm.submit();
           }, false);
 
