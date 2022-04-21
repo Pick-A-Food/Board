@@ -10,4 +10,7 @@ public interface BoardService {
     //DTO generic을 이용해서 뺄 수 있다...
 
     ListResponseDTO<BoardDTO> getList(ListDTO listDTO);
+
+    void delete(Integer bno);
+
 }

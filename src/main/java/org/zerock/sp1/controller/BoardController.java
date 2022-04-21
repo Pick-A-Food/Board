@@ -70,4 +70,12 @@ public class BoardController {
 
         return "redirect:/board/list";
     }
+
+    @PostMapping("/delete")
+    public String delete(Integer bno){
+
+        service.delete(bno);
+
+        return "redirect:/board/list";
+    }
 }

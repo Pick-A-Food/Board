@@ -48,7 +48,7 @@ public class BoardMapperTests {
 
     @Test
     public void testDelete(){
-        int bno = 32754;
+        int bno = 131057;
         boardMapper.delete(bno);
 
     }

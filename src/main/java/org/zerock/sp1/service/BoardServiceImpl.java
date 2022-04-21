@@ -35,4 +35,9 @@ public class BoardServiceImpl implements BoardService{
                 .total(boardMapper.getTotal(listDTO))
                 .build();
     }
+
+    @Override
+    public void delete(Integer bno){
+        boardMapper.delete(bno);
+    }
 }

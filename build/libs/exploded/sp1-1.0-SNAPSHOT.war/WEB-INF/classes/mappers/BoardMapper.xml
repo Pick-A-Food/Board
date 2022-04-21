@@ -49,9 +49,9 @@
             <include refid="search"></include>
     </select>
 
-    <delete id="delete">
-        delete from tbl_board where bno = #{bno}
-    </delete>
+    <update id="delete">
+        UPDATE tbl_board SET delYn = 1 WHERE bno=#{bno}
+    </update>
 
     <select id="selectOne" resultType="org.zerock.sp1.domain.Board">
         select * from tbl_board where bno = #{bno}
