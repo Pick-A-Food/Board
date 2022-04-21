@@ -15,4 +15,6 @@ public interface BoardService {
     void delete(Integer bno);
 
     void update(Board board);
+
+    Board getRead(int bno);
 }

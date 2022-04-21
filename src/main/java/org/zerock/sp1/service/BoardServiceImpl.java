@@ -58,4 +58,12 @@ public class BoardServiceImpl implements BoardService{
     public void update(Board board) {
         boardMapper.update(board);
     }
+
+    @Override
+    public Board getRead(int bno){
+
+        Board board = boardMapper.selectOne(bno);
+
+        return board;
+    }
 }

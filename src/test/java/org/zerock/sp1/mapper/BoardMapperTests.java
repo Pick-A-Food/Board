@@ -31,8 +31,8 @@ public class BoardMapperTests {
     @Test
     public void testSelectList(){
         ListDTO listDTO = new ListDTO();
-        listDTO.setType("tcw");
-        listDTO.setKeyword("55");
+//        listDTO.setType("tcw");
+//        listDTO.setKeyword("55");
         List<Board> boardList = boardMapper.selectList(listDTO);
 
         boardList.forEach(board -> log.info(board));
@@ -40,7 +40,7 @@ public class BoardMapperTests {
 
     @Test
     public void testSelectOne(){
-        int bno = 32755;
+        int bno = 6;
         Board board = boardMapper.selectOne(bno);
         log.info(board);
 
@@ -62,6 +62,7 @@ public class BoardMapperTests {
                 .build();
         boardMapper.update(board);
     }
+
 }
 //    @Test
 //    public void testInsert(){

@@ -28,6 +28,7 @@ public class BoardController {
         return "redirect:/board/list";
                 //send Redirect!
     }
+
     @GetMapping("/list")
     public void list( ListDTO listDTO, Model model){
                     //@ModelAttribute(name = "cri") 을 사용하면 이름 설정 가능
@@ -51,6 +52,7 @@ public class BoardController {
     public void registerGET(){
 
     }
+
 
     @PostMapping("/register")
     public String registerPOST(BoardDTO boardDTO, RedirectAttributes rttr){
@@ -76,5 +78,19 @@ public class BoardController {
     public String update(Board board){
         service.update(board);
         return "redirect:/board/read?bno=" + board.getBno();
+    }
+
+    @GetMapping("/read/{bno}")
+    public String read(@PathVariable("bno") int bno, ListDTO listDTO , Model model){
+
+        log.info("bno" , bno);
+        log.info("listDTO",listDTO);
+
+        Board boardDetail = service.getRead(bno);
+        model.addAttribute("listDTO", listDTO);
+        model.addAttribute("boardDetail",boardDetail);
+
+
+        return "/board/read";
     }
 }
