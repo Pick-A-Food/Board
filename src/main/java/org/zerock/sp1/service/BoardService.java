@@ -1,5 +1,6 @@
 package org.zerock.sp1.service;
 
+import org.zerock.sp1.domain.Board;
 import org.zerock.sp1.dto.BoardDTO;
 import org.zerock.sp1.dto.ListDTO;
 import org.zerock.sp1.dto.ListResponseDTO;
@@ -13,4 +14,5 @@ public interface BoardService {
 
     void delete(Integer bno);
 
+    void update(Board board);
 }

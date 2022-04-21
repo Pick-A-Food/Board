@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.zerock.sp1.domain.Board;
 import org.zerock.sp1.dto.BoardDTO;
 import org.zerock.sp1.dto.ListDTO;
 import org.zerock.sp1.dto.ListResponseDTO;
@@ -27,7 +28,6 @@ public class BoardController {
         return "redirect:/board/list";
                 //send Redirect!
     }
-
     @GetMapping("/list")
     public void list( ListDTO listDTO, Model model){
                     //@ModelAttribute(name = "cri") 을 사용하면 이름 설정 가능
@@ -52,7 +52,6 @@ public class BoardController {
 
     }
 
-
     @PostMapping("/register")
     public String registerPOST(BoardDTO boardDTO, RedirectAttributes rttr){
         log.info("post................");
@@ -69,9 +68,13 @@ public class BoardController {
 
     @PostMapping("/delete")
     public String delete(Integer bno){
-
         service.delete(bno);
-
         return "redirect:/board/list";
+    }
+
+    @PostMapping("/update")
+    public String update(Board board){
+        service.update(board);
+        return "redirect:/board/read?bno=" + board.getBno();
     }
 }

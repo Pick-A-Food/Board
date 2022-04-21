@@ -1,7 +1,6 @@
 package org.zerock.sp1.mapper;
 
 import org.zerock.sp1.domain.Board;
-import org.zerock.sp1.dto.BoardDTO;
 import org.zerock.sp1.dto.ListDTO;
 
 import java.util.List;
@@ -15,6 +14,7 @@ public interface BoardMapper {
     int getTotal(ListDTO listDTO);
 
     void delete(Integer bno);
+
     }
 
     //@Param(("skip")) int skip, @Param("size")int size); //보드 리스트
