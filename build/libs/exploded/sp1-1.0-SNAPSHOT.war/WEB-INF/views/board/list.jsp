@@ -33,7 +33,6 @@
                           <div class="col-sm-12 col-md-4">
                             <div>
                                 <select name="search-type" aria-controls="dataTable" class="search-type custom-select custom-select-sm form-control form-control-sm">
-                                  <option>---</option>
                                   <option value="t">제목</option>
                                   <option value="tc">제목+내용</option>
                                   <option value="tcw">제목+내용+작성자</option>
@@ -62,13 +61,13 @@
                                     <th>작성일</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody class="boardTable">
                             <c:forEach items="${dtoList}" var="board">
-                                <tr>
-                                    <td>${board.bno}</td>
-                                    <td>${board.title}</td>
-                                    <td>${board.writer}</td>
-                                    <td>${board.regdate}</td>
+                                <tr class="board">
+                                    <td class="bno">${board.bno}</td>
+                                    <td class="title">${board.title}</td>
+                                    <td class="writer">${board.writer}</td>
+                                    <td class="regdate">${board.regdate}</td>
                                 </tr>
                             </c:forEach>
                             </tbody>
@@ -128,12 +127,21 @@
           const actionForm = document.querySelector("form.actionForm");
           const searchForm = document.querySelector(".searchForm");
           const pagination = document.querySelector(".pagination");
+          const boardTable = document.querySelector(".boardTable");
 
+          const regDates = boardTable.querySelectorAll(".regdate");
+          regDates.forEach(regdate => {
+            const dateText = regdate.innerHTML;
+            regdate.innerHTML = dateText.split('T')[0];
+          });
+
+          // 한 페이지에서 'size'개씩 보기
           document.querySelector(".size").addEventListener("change", (e) => {
             actionForm.querySelector("input[name='size']").value = e.target.value;
             actionForm.submit();
           }, false);
 
+          // n번째 페이지로 이동
           pagination.addEventListener("click", (e) => {
             e.stopPropagation();
             e.preventDefault();
@@ -144,15 +152,8 @@
             actionForm.querySelector("input[name='page']").value = target.getAttribute("href");
             actionForm.submit();
           }, false);
-          // linkTags.forEach(tag => {
-          //   tag.addEventListener("click", (e) => {
-          //     e.preventDefault();
-          //     actionForm.querySelector("input[name='page']").value = tag.getAttribute("href");
-          //     actionForm.submit();
-          //   }, false);
-          // });
 
-
+          // 검색
           searchForm.querySelector("button.search-btn").addEventListener("click", (e) => {
             const searchType = searchForm.querySelector(".search-type").value;
             const keyword = searchForm.querySelector(".keyword").value;
@@ -161,6 +162,15 @@
             actionForm.querySelector("input[name='keyword']").value = keyword;
             actionForm.submit();
           }, false);
+
+          // 게시물 조회
+          boardTable.addEventListener("click", (e) => {
+            e.stopPropagation();
+            const board = e.target.closest("tr");
+            const bno = board.querySelector(".bno");
+            actionForm.setAttribute("action", "/board/read/" + bno.innerHTML);
+            actionForm.submit();
+          });
         </script>
         <!-- End of Main Content -->
 
