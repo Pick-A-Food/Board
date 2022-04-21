@@ -127,20 +127,30 @@
         <script>
           const actionForm = document.querySelector("form.actionForm");
           const searchForm = document.querySelector(".searchForm");
-          const linkTags = document.querySelectorAll(".page-link");
+          const pagination = document.querySelector(".pagination");
 
           document.querySelector(".size").addEventListener("change", (e) => {
             actionForm.querySelector("input[name='size']").value = e.target.value;
             actionForm.submit();
           }, false);
 
-          linkTags.forEach(tag => {
-            tag.addEventListener("click", (e) => {
-              e.preventDefault();
-              actionForm.querySelector("input[name='page']").value = tag.getAttribute("href");
-              actionForm.submit();
-            }, false);
-          });
+          pagination.addEventListener("click", (e) => {
+            e.stopPropagation();
+            e.preventDefault();
+            const target = e.target;
+            if (target.getAttribute("class") !== "page-link") {
+              return;
+            }
+            actionForm.querySelector("input[name='page']").value = target.getAttribute("href");
+            actionForm.submit();
+          }, false);
+          // linkTags.forEach(tag => {
+          //   tag.addEventListener("click", (e) => {
+          //     e.preventDefault();
+          //     actionForm.querySelector("input[name='page']").value = tag.getAttribute("href");
+          //     actionForm.submit();
+          //   }, false);
+          // });
 
 
           searchForm.querySelector("button.search-btn").addEventListener("click", (e) => {
