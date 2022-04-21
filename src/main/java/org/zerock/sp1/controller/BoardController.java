@@ -6,13 +6,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.zerock.sp1.domain.Board;
 import org.zerock.sp1.dto.BoardDTO;
 import org.zerock.sp1.dto.ListDTO;
 import org.zerock.sp1.dto.ListResponseDTO;
 import org.zerock.sp1.dto.PageMaker;
 import org.zerock.sp1.service.BoardService;
-
-import java.util.List;
 
 @Log4j2 // System.out.print 사용하지 말자. 이것만 사용안해도 성능이 10퍼는 좋아짐
 @Controller         //   뒤에 '/'써도 되고 안써도 됨
@@ -65,5 +64,19 @@ public class BoardController {
         service.insert(boardDTO);
 
         return "redirect:/board/list";
+    }
+    
+    @GetMapping("/read/{bno}")
+    public String read(@PathVariable("bno") int bno, ListDTO listDTO , Model model){
+        
+        log.info("bno" , bno);
+        log.info("listDTO",listDTO);
+        
+        Board boardDetail = service.getRead(bno);
+        model.addAttribute("listDTO", listDTO);
+        model.addAttribute("boardDetail",boardDetail);
+        
+        
+        return "/board/read";
     }
 }

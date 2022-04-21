@@ -1,5 +1,6 @@
 package org.zerock.sp1.service;
 
+import org.zerock.sp1.domain.Board;
 import org.zerock.sp1.dto.BoardDTO;
 import org.zerock.sp1.dto.ListDTO;
 import org.zerock.sp1.dto.ListResponseDTO;
@@ -10,4 +11,6 @@ public interface BoardService {
 
     //DTO generic을 이용해서 뺄 수 있다...
     ListResponseDTO<BoardDTO> getList(ListDTO listDTO);
+    
+    Board getRead(int bno);
 }

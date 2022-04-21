@@ -48,4 +48,12 @@ public class BoardServiceImpl implements BoardService{
                 .total(boardMapper.getTotal(listDTO))
                 .build();
     }
+    
+    @Override
+    public Board getRead(int bno){
+        
+        Board board = boardMapper.selectOne(bno);
+        
+        return board;
+    }
 }
