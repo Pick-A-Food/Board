@@ -22,6 +22,18 @@ public class BoardServiceImpl implements BoardService{
     private final BoardMapper boardMapper;
     private final ModelMapper modelMapper;
 
+    //글쓰기 등록
+    @Override
+    public void insert(BoardDTO boardDTO) {
+
+        Board board = Board.builder().title(boardDTO.getTitle())
+                                    .content(boardDTO.getContent())
+                                    .writer(boardDTO.getWriter()).build();
+
+        boardMapper.insert(board);
+        
+    }
+
     @Override
     public ListResponseDTO<BoardDTO> getList(ListDTO listDTO) {
         List<Board> boardList = boardMapper.selectList(listDTO);
@@ -30,6 +42,7 @@ public class BoardServiceImpl implements BoardService{
                 boardList.stream()
                         .map(board -> modelMapper.map(board, BoardDTO.class))
                         .collect(Collectors.toList());
+
         return ListResponseDTO.<BoardDTO>builder()
                 .dtoList(dtoList)
                 .total(boardMapper.getTotal(listDTO))
