@@ -11,12 +11,12 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class Board {
 
-    private Integer bno;
-    private String title;
-    private String content;
-    private String writer;
+  private Integer bno;
+  private String title;
+  private String content;
+  private String writer;
 
-    private LocalDateTime regdate;
-    private LocalDateTime updatedate;
+  private LocalDateTime regdate;
+  private LocalDateTime updatedate;
 
 }

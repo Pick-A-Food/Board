@@ -8,7 +8,7 @@
     <!-- 검색 조건 -->
     <sql id ="search">
         <where>
-            <if test="keyword != null">
+            <if test="keyword != null and keyword != ''">
                 <foreach collection="types" item="item" separator="or" open="(" close=")">
                     <if test='item == "t"'>
                         title like concat('%', #{keyword}, '%')
@@ -37,7 +37,13 @@
     <!-- $ 사용하지 않기! SQL 인택션 공격에 위험하다!!!-->
 
     <select id="selectList" resultType="org.zerock.sp1.domain.Board">
-        select bno, title, content, writer, regDate, updateDate
+        select
+               bno,
+               title,
+               content,
+               writer,
+               date_format(regDate,'%Y-%m-%d') as regdate ,
+               updateDate
         from tbl_board
             <include refid="search"></include>
         order by bno desc
