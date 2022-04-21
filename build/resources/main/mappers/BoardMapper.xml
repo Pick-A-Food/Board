@@ -17,8 +17,7 @@
                     <if test='item == "c"'>
                         content like concat('%', #{keyword}, '%')
                     </if>
-                    <if test='
-                    item == "w"'>
+                    <if test='item == "w"'>
                         writer like concat('%', #{keyword}, '%')
                     </if>
                 </foreach>
@@ -42,7 +41,7 @@
                title,
                content,
                writer,
-               date_format(regDate,'%Y-%m-%d') as regdate ,
+               regDate,
                updateDate
         from tbl_board
             <include refid="search"></include>
