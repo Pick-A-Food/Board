@@ -13,6 +13,8 @@ import org.zerock.sp1.dto.ListResponseDTO;
 import org.zerock.sp1.dto.PageMaker;
 import org.zerock.sp1.service.BoardService;
 
+import java.util.List;
+
 @Log4j2 // System.out.print 사용하지 말자. 이것만 사용안해도 성능이 10퍼는 좋아짐
 @Controller         //   뒤에 '/'써도 되고 안써도 됨
 @RequestMapping("/board/") //get, post 상관없이 다 처리하기 위해 사용.. , annotation 기본은 value
@@ -65,18 +67,30 @@ public class BoardController {
 
         return "redirect:/board/list";
     }
-    
+
+    @PostMapping("/delete")
+    public String delete(Integer bno){
+        service.delete(bno);
+        return "redirect:/board/list";
+    }
+
+    @PostMapping("/update")
+    public String update(Board board){
+        service.update(board);
+        return "redirect:/board/read?bno=" + board.getBno();
+    }
+
     @GetMapping("/read/{bno}")
     public String read(@PathVariable("bno") int bno, ListDTO listDTO , Model model){
-        
+
         log.info("bno" , bno);
         log.info("listDTO",listDTO);
-        
+
         Board boardDetail = service.getRead(bno);
         model.addAttribute("listDTO", listDTO);
         model.addAttribute("boardDetail",boardDetail);
-        
-        
+
+
         return "/board/read";
     }
 }

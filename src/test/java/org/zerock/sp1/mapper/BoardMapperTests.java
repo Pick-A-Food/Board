@@ -48,9 +48,25 @@ public class BoardMapperTests {
 
     @Test
     public void testDelete(){
-        int bno = 32754;
+        int bno = 4;
         boardMapper.delete(bno);
 
     }
-    
+
+    @Test
+    public void testUpdate(){
+        Board board = Board.builder()
+                .title("수정된 제목")
+                .content("수정된 내용")
+                .bno(6)
+                .build();
+        boardMapper.update(board);
+    }
+
 }
+//    @Test
+//    public void testInsert(){
+//        Board board = Board.builder().title("제목").content("내용").writer("사용자1").build();
+//
+//        boardMapper.insert(board);
+//        log.info(board);
