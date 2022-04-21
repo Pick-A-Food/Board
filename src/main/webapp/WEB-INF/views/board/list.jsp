@@ -64,11 +64,11 @@
                             </thead>
                             <tbody>
                             <c:forEach items="${dtoList}" var="board">
-                                <tr>
-                                    <td>${board.bno}</td>
-                                    <td>${board.title}</td>
-                                    <td>${board.writer}</td>
-                                    <td>${board.regdate}</td>
+                                <tr class="boardItem">
+                                    <td class="bno">${board.bno}</td>
+                                    <td class="title">${board.title}</td>
+                                    <td class="writer">${board.writer}</td>
+                                    <td class="regdate">${board.regdate}</td>
                                 </tr>
                             </c:forEach>
                             </tbody>
