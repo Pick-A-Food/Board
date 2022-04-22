@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.zerock.sp1.domain.Board;
 import org.zerock.sp1.dto.BoardDTO;
 import org.zerock.sp1.dto.ListDTO;
 import org.zerock.sp1.dto.ListResponseDTO;
@@ -65,5 +66,31 @@ public class BoardController {
         service.insert(boardDTO);
 
         return "redirect:/board/list";
+    }
+
+    @PostMapping("/delete")
+    public String delete(Integer bno){
+        service.delete(bno);
+        return "redirect:/board/list";
+    }
+
+    @PostMapping("/update")
+    public String update(Board board){
+        service.update(board);
+        return "redirect:/board/read?bno=" + board.getBno();
+    }
+
+    @GetMapping("/read/{bno}")
+    public String read(@PathVariable("bno") int bno, ListDTO listDTO , Model model){
+
+        log.info("bno" , bno);
+        log.info("listDTO",listDTO);
+
+        Board boardDetail = service.getRead(bno);
+        model.addAttribute("listDTO", listDTO);
+        model.addAttribute("boardDetail",boardDetail);
+
+
+        return "/board/read";
     }
 }

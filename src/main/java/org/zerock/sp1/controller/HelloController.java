@@ -11,6 +11,5 @@ public class HelloController {
     @GetMapping("/hello")
     public void hello(){
         log.info("hello.................");
-
     }
 }

@@ -17,7 +17,8 @@
                     <if test='item == "c"'>
                         content like concat('%', #{keyword}, '%')
                     </if>
-                    <if test='item == "w"'>
+                    <if test='
+                    item == "w"'>
                         writer like concat('%', #{keyword}, '%')
                     </if>
                 </foreach>
@@ -41,7 +42,7 @@
                title,
                content,
                writer,
-               regDate,
+               date_format(regDate,'%Y-%m-%d') as regdate ,
                updateDate
         from tbl_board
             <include refid="search"></include>
@@ -54,9 +55,9 @@
             <include refid="search"></include>
     </select>
 
-    <delete id="delete">
-        delete from tbl_board where bno = #{bno}
-    </delete>
+    <update id="delete">
+        UPDATE tbl_board SET delYn = 1 WHERE bno=#{bno}
+    </update>
 
     <select id="selectOne" resultType="org.zerock.sp1.domain.Board">
         select * from tbl_board where bno = #{bno}
