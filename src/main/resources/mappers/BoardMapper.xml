@@ -17,8 +17,7 @@
                     <if test='item == "c"'>
                         content like concat('%', #{keyword}, '%')
                     </if>
-                    <if test='
-                    item == "w"'>
+                    <if test='item == "w"'>
                         writer like concat('%', #{keyword}, '%')
                     </if>
                 </foreach>
