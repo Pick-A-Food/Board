@@ -42,7 +42,7 @@
                title,
                content,
                writer,
-               date_format(regDate,'%Y-%m-%d') as regdate ,
+               regDate,
                updateDate
         from tbl_board
             <include refid="search"></include>
